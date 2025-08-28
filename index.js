@@ -24,10 +24,14 @@ const handleVolume = (e) =>{
 const showHidekeys = ()=>{
     pianoKeys.forEach(key =>key.classList.toggle("hide"))
 }
-const pressedkey = (e) => {
-  if (AllKeys.includes(e.key)) playtune(e.key);
-};
-
+const pressedKeys = new Set();
+document.addEventListener('keydown', e => {
+    if(AllKeys.includes(e.key) && !pressedKeys.has(e.key)){
+        pressedKeys.add(e.key);
+        playtune(e.key);
+    }
+});
+document.addEventListener('keyup', e => pressedKeys.delete(e.key));
 keyCheckbox.addEventListener("click" ,showHidekeys)
 volumeSlider.addEventListener("input",handleVolume)
 document.addEventListener("keydown", pressedkey);
