@@ -98,6 +98,12 @@ header .column span {
     text-transform: uppercase;
     text-align: center;
 }
+.piano-keys .key span {
+  display: none;
+}
+.piano-keys .key.show span {
+  display: block;
+}
 
 .piano-keys .black {
     width: 44px;
