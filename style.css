@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Ephesis&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 * {
+    background: #000;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -17,11 +18,10 @@ body {
 }
 
 .wrapper {
+    
     border-radius: 20px;
     padding: 35px 40px;
     background: #141414;
-    width: 100%;
-    max-width: 900px;
 }
 
 .wrapper header {
@@ -29,7 +29,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
 }
 
 header h2 {
@@ -39,19 +38,16 @@ header h2 {
 header .column {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
 }
 
 header .column span {
     font-weight: 500;
     margin-right: 15px;
-    font-size: 1.2rem;
-    margin-bottom: 5px;
+    font-size: 1.19rem;
 }
 
 .volume-slider input {
     accent-color: #fff;
-    max-width: 150px;
 }
 
 .keys-checkbox input {
@@ -85,8 +81,6 @@ header .column span {
 .piano-keys {
     display: flex;
     margin-top: 40px;
-    flex-wrap: wrap;
-    justify-content: center;
 }
 
 .piano-keys .key {
@@ -98,12 +92,6 @@ header .column span {
     text-transform: uppercase;
     text-align: center;
 }
-.piano-keys .key span {
-  display: none;
-}
-.piano-keys .key.show span {
-  display: block;
-}
 
 .piano-keys .black {
     width: 44px;
@@ -112,17 +100,71 @@ header .column span {
     margin: 0 -22px;
     border-radius: 0 0 5px 5px;
     background: linear-gradient(#333 96%, #000);
-    transition: all 0.2s ease;
 }
-
 .piano-keys .black.active {
     box-shadow: inset -5px 5px 20px rgba(255,255,255,0.1);
     background: linear-gradient(to bottom,#000 , #434343 );
 }
+
 
 .piano-keys .white {
     width: 70px;
     height: 230px;
     border-radius: 8px;
     border: 1px solid #000;
-    background: linear-gradient(#fff 96%,
+    background: linear-gradient(#fff 96%, #eee 4%);
+}
+.piano-keys .white.active {
+    box-shadow: inset -5px 5px 20px rgba(0,0,0,0.2);
+    background: linear-gradient(to bottom,#fff 0%, #eee 4%);
+}
+.piano-keys span {
+    position: absolute;
+    bottom: 20px;
+    width: 0%;
+    font-size: 1.13rem;
+    text-align: center;
+}
+.piano-keys .key.hide span{
+    display: none;
+}
+@media screen and (max-width:815px) {
+    .wrapper{
+        padding: 25px;
+    }
+    header{
+        flex-direction: column;
+    }
+    header :where(h2, .column){
+        margin-bottom:13px;
+    }
+    .volume-slider input {
+        max-width: 100px;
+    }
+    .piano-keys .key:where(:nth-child(9), :nth-child(10)){
+        display: none;
+    }
+    .piano-keys .black {
+        height: 100px;
+        width: 40px;
+        margin: 0 -20px 0 -20px;
+    }
+    .piano-keys .white {
+        height: 180px;
+        width: 60px;
+    }
+}
+
+
+@media screen and (max-width: 615px){
+    .piano-keys .key:nth-child(13),
+    .piano-keys .key:nth-child(14),
+    .piano-keys .key:nth-child(15),
+    .piano-keys .key:nth-child(16),
+    .piano-keys .key:nth-child(17){
+        display: none;
+    }
+.piano-keys .white {
+    width: 50px;
+}
+}
